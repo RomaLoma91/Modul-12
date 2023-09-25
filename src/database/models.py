@@ -1,10 +1,14 @@
-from .db import Base
+from db import Base
+from enum import Enum
 
 from sqlalchemy import Column, Integer, String, func, DateTime, Date
 from sqlalchemy.sql.schema import ForeignKey
 
 from sqlalchemy.orm import relationship
 
+class ContactType(Enum):
+    EMAIL = "email"
+    PHONE = "phone"
 
 class Contact(Base):
     __tablename__ = "contacts"
