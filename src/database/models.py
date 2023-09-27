@@ -23,14 +23,9 @@ class Contact(Base):
 
     phones = relationship("Phone", backref="contacts")
 
-class Phone(Base):
-    __tablename__ = "phones"
-
-    id = Column(Integer, primary_key=True)
-    phone = Column(String(20), nullable=False, unique=True)
-    contact_id = Column(Integer, ForeignKey("contacts.id"), nullable=False)
-
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
-
-    contact = relationship("Contact", back_populates="phones")
+def __init__(self, first_name, last_name, birthday, contact_type, contact_value):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.birthday = birthday
+        self.contact_type = contact_type
+        self.contact_value = contact_value
